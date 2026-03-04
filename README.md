@@ -1,3 +1,3 @@
-# ejercicios-accenture
+# ejercicios
 Probando que el filtro me ignora.
 Intento 2
