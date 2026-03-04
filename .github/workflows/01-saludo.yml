@@ -1,0 +1,13 @@
+name: Primer Saludo Accenture
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  decir-hola:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Paso 1
+        run: echo "Soy Karim y esto funciona desde Git Bash"
