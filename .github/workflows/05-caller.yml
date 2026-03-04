@@ -1,0 +1,11 @@
+name: 5. Workflow Llamador
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  llamar-al-maestro:
+    uses: ./.github/workflows/05-reusable.yml
+    with:
+      nombre_usuario: "Karim"

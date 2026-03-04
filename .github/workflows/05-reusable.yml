@@ -1,0 +1,15 @@
+name: 5. Workflow Maestro (Reusable)
+
+on:
+  workflow_call: 
+    inputs:
+      nombre_usuario:
+        required: true
+        type: string
+
+jobs:
+  trabajo-reutilizable:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saludo Estándar
+        run: echo "Hola ${{ inputs.nombre_usuario }}, soy el Workflow Maestro."
