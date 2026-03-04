@@ -1,0 +1,13 @@
+name: 4. Filtro de Rutas
+
+on:
+  push:
+    paths:
+      - 'src/**'  
+
+jobs:
+  aviso-critico:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mensaje de Alerta
+        run: echo "Se ha tocado código en la carpeta SRC. Ejecutando pruebas..."
