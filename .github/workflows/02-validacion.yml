@@ -1,0 +1,24 @@
+name: 2. Validación de Código
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  validar-node:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Bajar código (Checkout)
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Revisar código
+        run: npm run lint
