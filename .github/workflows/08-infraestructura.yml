@@ -1,0 +1,42 @@
+name: 8. Desplegar Infraestructura
+
+on:
+  push:
+    paths:
+      - 'infraestructura/**' # Solo se ejecuta si tocamos la carpeta infraestructura
+
+jobs:
+  crear-s3:
+    runs-on: ubuntu-latest # GitHub nos presta un servidor Ubuntu nuevecito
+    
+    # Le decimos al robot que trabaje dentro de la carpeta infraestructura
+    defaults:
+      run:
+        working-directory: ./infraestructura
+
+    steps:
+      - name: 1. Bajar mi código
+        uses: actions/checkout@v4
+
+      - name: 2. Levantar LocalStack
+        run: docker compose up -d
+
+      - name: 3. Esperar 10 segundos a que LocalStack despierte
+        run: sleep 10
+
+      - name: 4. Instalar Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false
+
+      - name: 5. Inicializar Terraform
+        run: terraform init
+
+      - name: 6. Construir el S3 
+        run: terraform apply -auto-approve
+
+      - name: 7. Comprobar que el S3 existe de verdad
+        env:
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+        run: aws --endpoint-url=http://localhost:4566 s3 ls
