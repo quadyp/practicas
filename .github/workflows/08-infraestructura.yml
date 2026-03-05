@@ -7,9 +7,9 @@ on:
 
 jobs:
   crear-s3:
-    runs-on: ubuntu-latest # GitHub nos presta un servidor Ubuntu nuevecito
+    runs-on: ubuntu-latest 
     
-    # Le decimos al robot que trabaje dentro de la carpeta infraestructura
+    # Le decimos a git que trabaje dentro de la carpeta infraestructura
     defaults:
       run:
         working-directory: ./infraestructura
