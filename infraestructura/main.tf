@@ -1,9 +1,9 @@
 # 1.AWS
 provider "aws" {
-  region                      = "us-east-1"
-  access_key                  = "test"   # Credenciales de mentira
-  secret_key                  = "test"   # Credenciales de mentira
-  
+  region     = "us-east-1"
+  access_key = "test" # Credenciales de mentira
+  secret_key = "test" # Credenciales de mentira
+
   # Que Terraform no intente validar con el AWS real
   skip_credentials_validation = true
   skip_requesting_account_id  = true
